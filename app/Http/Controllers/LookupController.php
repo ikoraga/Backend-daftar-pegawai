@@ -16,10 +16,8 @@ class LookupController extends Controller
     public function index()
     {
         $data = $this->svc->getAll();
+        // dd(array_map(fn($v) => count($v), $data));
+        return successResponse($data, 'Data berhasil diambil');
 
-        return response()->json([
-            'message' => 'Success',
-            'data' => $data
-        ]);
     }
 }

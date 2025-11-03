@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Services\AuthService;
 use Illuminate\Http\Request;
-
+use App\Helpers\ResponseFormatter;
 class AuthController extends Controller
 {
     protected $auth;
@@ -34,26 +34,11 @@ class AuthController extends Controller
         ]);
 
 
-        $data = $this->auth->login([
-            'email' => $request->email,
-            'password' => $request->password
-        ]);
-
-        if (!$data) {
-            return response()->json([
-                'message' => 'Email atau password salah'
-            ], 401);
-        }
-        return response()->json([
-            'message' => 'Login berhasil',
-        ]);
+        return $this->auth->login($request->only('email', 'password'));
     }
     public function logout(Request $request)
     {
-        $this->auth->logout($request->user());
-        return response()->json([
-            'message' => 'Logout berhasil'
-        ]);
+        return $this->auth->logout($request->user());
     }
 
 }

@@ -12,7 +12,7 @@ class Ranks extends Model
     use SoftDeletes, HasUlids;
 
     protected $fillable = [
-        'kode',
+        'code',
         'name',
     ];
     public function employees(): HasMany

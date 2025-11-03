@@ -2,17 +2,32 @@
 
 namespace App\Services;
 
-use App\Models\{Religions, Ranks, Echelons, Positions};
+use Illuminate\Support\Facades\DB;
 
 class LookupService
 {
     public function getAll()
     {
         return [
-            'religions' => Religions::all(['id', 'name']),
-            'ranks' => Ranks::all(['id', 'code', 'name']),
-            'echelons' => Echelons::all(['id', 'code', 'name']),
-            'positions' => Positions::all(['id', 'name']),
+            'religions' => DB::table('religions')
+                ->select('id', 'name')
+                ->orderBy('name')
+                ->get(),
+
+            'ranks' => DB::table('ranks')
+                ->select('id', 'code', 'name')
+                ->orderBy('code')
+                ->get(),
+
+            'echelons' => DB::table('echelons')
+                ->select('id', 'code', 'name')
+                ->orderBy('code')
+                ->get(),
+
+            'positions' => DB::table('positions')
+                ->select('id', 'name')
+                ->orderBy('name')
+                ->get(),
         ];
     }
 }

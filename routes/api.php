@@ -19,13 +19,19 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('employees/{id}', [EmployeesController::class, 'update']);
     Route::delete('employees/{id}', [EmployeesController::class, 'destroy']);
     Route::post('employees/{id}/photo', [EmployeesController::class, 'uploadPhoto']);
+
     Route::get('lookups', [LookupController::class, 'index']);
+
     Route::get('units', [UnitController::class, 'index']);
     Route::post('units', [UnitController::class, 'store']);
     Route::put('units/{unit}', [UnitController::class, 'update']);
     Route::delete('units/{unit}', [UnitController::class, 'destroy']);
+
     Route::get('print/employees', [PrintController::class, 'employees']);
+
     Route::post('employee-photos', [EmployeePhotoController::class, 'store']);
     Route::delete('employee-photos/{photo}', [EmployeePhotoController::class, 'destroy']);
+
     Route::post('logout', [AuthController::class, 'logout']);
 });
+

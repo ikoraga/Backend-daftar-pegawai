@@ -12,7 +12,7 @@ return new class extends Migration {
     {
         Schema::create('ranks', function (Blueprint $table) {
             $table->ulid('id')->primary();
-            $table->string('kode', 5)->unique();
+            $table->string('code', 5)->unique();
             $table->string('name', 50);
             $table->timestamps();
         });
