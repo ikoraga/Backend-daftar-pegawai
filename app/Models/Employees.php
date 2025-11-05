@@ -34,6 +34,11 @@ class Employees extends Model
         'created_at'
     ];
 
+    protected $casts = [
+        'gender' => 'boolean',
+        'birth_date' => 'date:Y-m-d',
+    ];
+
     public function position(): BelongsTo
     {
         return $this->belongsTo(Positions::class, 'position_id', 'id');
